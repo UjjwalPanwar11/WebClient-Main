@@ -1,0 +1,45 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+driver = webdriver.Chrome()
+
+driver.get("https://staging-unified.leena.ai/login")
+driver.maximize_window()
+time.sleep(5)
+username_field = driver.find_element(By.NAME,'email')
+username_field.send_keys("ujjwal.panwar@leena.ai")
+time.sleep(2)
+next_button = driver.find_element(By.XPATH, "//button[normalize-space()='Next']")
+next_button.click()
+time.sleep(4)
+password_field = driver.find_element(By.NAME,'password')
+password_field.send_keys("LeenaAutomation0120")
+time.sleep(2)
+login_button = driver.find_element(By.XPATH, "//button[normalize-space()='Log In']")  # Adjust XPath as needed
+login_button.click()
+time.sleep(2)
+side_menu = driver.find_element(By.XPATH,"//div[contains(@class,'mainHeader')]//i[contains(@class,'button')]")
+side_menu.click()
+time.sleep(2)
+eventFiringWebdriver = driver.execute_script("document.querySelector('.DrawerNavigation__DrawerStyles-sc-19285hk-0.AMXxv').scrollTop=500")
+time.sleep(2)
+itautomation = driver.find_element(By.XPATH, "//a[contains(@class,'itAutomation')]//div[contains(@class,'dashboardListItem')]")
+itautomation.click()
+time.sleep(5)
+add_software = driver.find_element(By.XPATH, "//button[normalize-space()='Add software']")
+add_software.click()
+time.sleep(2)
+software_name_field = driver.find_element(By.NAME, "name")
+software_name_field.send_keys("New Selenium Test")
+software_version_field = driver.find_element(By.NAME, "version")
+software_version_field.send_keys("v4.1.0")
+operating_system_dropdown = driver.find_element(By.XPATH,"//div[contains(@class,'MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-pg0de9')]//i[contains(@class,'ph ph-caret-down css-1duve67')]")
+operating_system_dropdown.click()
+time.sleep(3)
+os_option = driver.find_element(By.XPATH,"//input[@id=':r7k:']")
+os_option.click()
+time.sleep(5)
+
+driver.close()
+
+
